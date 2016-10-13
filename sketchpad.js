@@ -1,5 +1,5 @@
 
-function createGrid(height, width) {
+createGrid = function(height, width) {
 	for (i = 0; i < height; i++) {
 		$(".container").append("<div class='row'></div>");
 	}
@@ -8,32 +8,45 @@ function createGrid(height, width) {
 	}
 }
 
-draw = function() {
+draw = function(color) {
 	$(".square").mouseenter(function() {
-		$(this).addClass("ink");
+		$(this).css("background-color", color);
 	});
 }
 
 reset = function() {
-	$(".square").removeClass("ink");
+	$(".square").css("background-color", "ghostwhite");
 }
 
 erase = function() {
 	$(".square").mouseenter(function() {
-		$(this).removeClass("ink");
+		$(this).css("background-color", "ghostwhite");
 	});
 }
 
+newGrid = function() {
+	$(".container").empty();
+	height = parseInt(prompt("What size grid? Height:"));
+ 	width = parseInt(prompt("Width:"));
+ 	createGrid(height, width);
+}
+
 $(document).ready(function() {
-	createGrid(100, 100);
-	$(".square").click(draw);
+	createGrid(100, 100);  
 	$("#reset").click(reset);
+	$("#grid-size").click(newGrid);
 	$("#eraser").click(erase);
-	$("#grid-size").click(function() {
-		$(".container").empty();
-		height = parseInt(prompt("What size grid? Height:"));
- 		width = parseInt(prompt("Width:"));
- 		createGrid(height, width);
- 		$(".square").click(draw);
+	
+	$("#black").click(function() {
+		draw("black");
+	});
+	$("#red").click(function() {
+		draw("red");
+	});
+	$("#blue").click(function() {
+		draw("blue");
+	});
+	$("#green").click(function() {
+		draw("green");
 	});
 });

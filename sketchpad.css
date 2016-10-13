@@ -10,6 +10,27 @@ body {
 button {
 	display: inline;
 	margin-right: 10px;
+	border: black thin solid;
+}
+
+#black {
+	background-color: black;
+	color: black;
+}
+
+#red {
+	background-color: red;
+	color: red;
+}
+
+#blue {
+	background-color: blue;
+	color: blue;
+}
+
+#green {
+	background-color: green;
+	color: green;
 }
 
 .row {
@@ -23,10 +44,6 @@ button {
 	background-color: ghostwhite;
 	display: inline-block;
 	position: relative;
-}
-
-.ink {
-	background-color: black;
 }
 
 
