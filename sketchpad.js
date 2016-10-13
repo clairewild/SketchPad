@@ -1,5 +1,6 @@
 
 createGrid = function(height, width) {
+	$(".container").empty();
 	for (i = 0; i < height; i++) {
 		$(".container").append("<div class='row'></div>");
 	}
@@ -15,7 +16,11 @@ draw = function(color) {
 }
 
 reset = function() {
+	$(".row").css("height", "5px");
+	$(".square").css("height", "5px");
+	$(".square").css("width", "5px");
 	$(".square").css("background-color", "ghostwhite");
+	createGrid(100, 100); 
 }
 
 erase = function() {
@@ -24,17 +29,19 @@ erase = function() {
 	});
 }
 
-newGrid = function() {
-	$(".container").empty();
-	height = parseInt(prompt("What size grid? Height:"));
- 	width = parseInt(prompt("Width:"));
- 	createGrid(height, width);
+changeRes = function() {
+	res = parseInt(prompt("Enter size of each square in px:"));
+	r = res.toString() + "px";
+	createGrid(500/res, 500/res);
+	$(".row").css("height", r);
+	$(".square").css("height", r);
+	$(".square").css("width", r);
 }
 
 $(document).ready(function() {
 	createGrid(100, 100);  
 	$("#reset").click(reset);
-	$("#grid-size").click(newGrid);
+	$("#resolution").click(changeRes);
 	$("#eraser").click(erase);
 	
 	$("#black").click(function() {
