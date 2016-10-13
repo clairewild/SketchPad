@@ -9,24 +9,12 @@ createGrid = function(height, width) {
 	}
 }
 
-draw = function(color) {
-	$(".square").mouseenter(function() {
-		$(this).css("background-color", color);
-	});
-}
-
 reset = function() {
 	$(".row").css("height", "5px");
 	$(".square").css("height", "5px");
 	$(".square").css("width", "5px");
 	$(".square").css("background-color", "ghostwhite");
 	createGrid(100, 100); 
-}
-
-erase = function() {
-	$(".square").mouseenter(function() {
-		$(this).css("background-color", "ghostwhite");
-	});
 }
 
 changeRes = function() {
@@ -36,6 +24,25 @@ changeRes = function() {
 	$(".row").css("height", r);
 	$(".square").css("height", r);
 	$(".square").css("width", r);
+}
+
+erase = function() {
+	$(".square").mouseenter(function() {
+		$(this).css("background-color", "ghostwhite");
+	});
+}
+
+draw = function(color) {
+	$(".square").mouseenter(function() {
+		$(this).css("background-color", color);
+	});
+}
+
+drawRandom = function() {
+	$(".square").mouseenter(function() {
+  		color = "#" + (Math.random().toString(16) + "000000").substring(2,8);
+  		$(this).css("background-color", color);
+  	});
 }
 
 $(document).ready(function() {
@@ -56,4 +63,6 @@ $(document).ready(function() {
 	$("#green").click(function() {
 		draw("green");
 	});
+
+	$("#random").click(drawRandom);
 });
